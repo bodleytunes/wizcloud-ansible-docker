@@ -7,3 +7,7 @@
 
 `docker-compose build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_ed25519)";`
 
+or all in one
+
+`docker-compose build --build-arg SSH_PRIVATE_KEY="$(cat ~/.ssh/id_ed25519)" && docker-compose up`
+
