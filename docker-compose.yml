@@ -11,6 +11,7 @@ services:
     container_name: wizcloud-ansible-deployer
     hostname: wizcloud-ansible-deployer
     restart: "no"
+    entrypoint: ['ansible-playbook', '-i', 'inventory.ini', 'day0.yml']
     networks:
       wizcloud:
         ipv4_address: 172.31.0.4
