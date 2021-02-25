@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+  wizcloud-ansible-deployer:
+    build:
+      context: .
+    environment:
+      - SSH_PRIVATE_KEY={(SSH_PRIVATE_KEY}
+    privileged: true
+    image: wizcloud-ansible-deployer:1.0
+    env_file: .env
+    container_name: wizcloud-ansible-deployer
+    hostname: wizcloud-ansible-deployer
+    restart: "no"
+    networks:
+      wizcloud:
+        ipv4_address: 172.31.0.4
+    volumes:
+      - /root/.ssh/id_ed25519:/root/.ssh/id_ed25519
+
+networks:
+  wizcloud:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.31.0.0/24"
