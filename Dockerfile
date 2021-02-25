@@ -25,4 +25,4 @@ COPY --from=intermediate /wizzcloud-ansible-lab /wizzcloud-ansible-lab
 
 WORKDIR /wizzcloud-ansible-lab
 
-RUN ansible-playbook -i inventory.ini day0.yml
+#RUN ansible-playbook -i inventory.ini day0.yml
