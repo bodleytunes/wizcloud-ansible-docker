@@ -13,16 +13,14 @@ RUN git clone git@github.com:bodleytunes/wizzcloud-ansible-lab.git
 
 
 
-
-FROM python:3.8-slim
+# final resulting container
+FROM python:3.9-slim
 
 RUN apt-get update && apt-get install python3-pip  -y
 
-#COPY ./requirements.txt requirements.txt
 RUN pip3 install ansible
 
 COPY --from=intermediate /wizzcloud-ansible-lab /wizzcloud-ansible-lab
 
 WORKDIR /wizzcloud-ansible-lab
 
-#RUN ansible-playbook -i inventory.ini day0.yml
