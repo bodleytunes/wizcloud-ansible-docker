@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y git
 ARG SSH_PRIVATE_KEY
 RUN mkdir /root/.ssh/ && chmod 700 /root/.ssh/
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_ed25519 && chmod 600 /root/.ssh/id_ed25519
+# keyscan otherwise host key checking fails
 RUN ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
 RUN git clone git@github.com:bodleytunes/wizzcloud-ansible-lab.git
 
