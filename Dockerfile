@@ -1,3 +1,4 @@
+# Multistage docker build
 # this is our first build stage, it will not persist in the final image
 FROM ubuntu as intermediate
 
@@ -13,7 +14,7 @@ RUN git clone git@github.com:bodleytunes/wizzcloud-ansible-lab.git
 
 
 
-# final resulting container
+# final resulting container, should not contain the ssh-key from above.
 FROM python:3.9-slim
 
 RUN apt-get update && apt-get install python3-pip  -y
