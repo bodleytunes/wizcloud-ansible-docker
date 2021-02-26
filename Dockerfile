@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y git
 ARG SSH_PRIVATE_KEY
 RUN mkdir /root/.ssh/ && chmod 700 /root/.ssh/
 RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_ed25519 && chmod 600 /root/.ssh/id_ed25519
+
 # keyscan otherwise host key checking fails
 RUN ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
 RUN git clone git@github.com:bodleytunes/wizzcloud-ansible-lab.git
@@ -18,7 +19,8 @@ RUN git clone git@github.com:bodleytunes/wizzcloud-ansible-lab.git
 # final resulting container, should not contain the ssh-key from above.
 FROM python:3.9-slim
 
-RUN apt-get update && apt-get install python3-pip  -y
+#RUN echo "${VAULT_PASSWORD}" > /root/.vault_password && chmod 600 /root/.vault_password
+RUN apt-get update && apt-get install python3-pip openssh-client  -y
 
 RUN pip3 install ansible
 

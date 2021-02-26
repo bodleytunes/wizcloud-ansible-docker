@@ -1,13 +1,15 @@
 version: '3.1'
 services:
   wizcloud-ansible-deployer:
+  # build this local dockerfile (current working directory)
     build:
       context: .
     environment:
-      - SSH_PRIVATE_KEY={(SSH_PRIVATE_KEY}
+      - SSH_PRIVATE_KEY
+#      - VAULT_PASSWORD
     privileged: true
     image: wizcloud-ansible-deployer:1.0
-    env_file: .env
+#    env_file: .env
     container_name: wizcloud-ansible-deployer
     hostname: wizcloud-ansible-deployer
     restart: "no"
@@ -16,7 +18,9 @@ services:
       wizcloud:
         ipv4_address: 172.31.0.4
     volumes:
-      - /root/.ssh/id_ed25519:/root/.ssh/id_ed25519
+      - /root/.vault_password:/root/.vault_password
+      - /root/.ssh/config:/root/.ssh/config
+      - /root/.ssh/id_troon:/root/.ssh/id_troon
 
 networks:
   wizcloud:
