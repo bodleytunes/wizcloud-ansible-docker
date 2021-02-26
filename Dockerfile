@@ -12,6 +12,8 @@ RUN echo "${SSH_PRIVATE_KEY}" > /root/.ssh/id_ed25519 && chmod 600 /root/.ssh/id
 
 # keyscan otherwise host key checking fails
 RUN ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts
+# dummy variable to force it to git clone every time.  This needs a re-think as doesn't sit right.
+ARG CACHEBUST=1 
 RUN git clone git@github.com:bodleytunes/wizzcloud-ansible-lab.git
 
 
