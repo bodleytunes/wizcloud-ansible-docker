@@ -7,12 +7,14 @@ services:
     environment:
       - SSH_PRIVATE_KEY
 #      - VAULT_PASSWORD
-    privileged: true
-    image: wizcloud-ansible-deployer:1.0
+    #image: wizcloud-ansible-deployer:1.0
+    # harbor registry container
+    image: reg.wizznet.co.uk:80/wizznet/wizcloud-ansible-deployer
 #    env_file: .env
     container_name: wizcloud-ansible-deployer
     hostname: wizcloud-ansible-deployer
     restart: "no"
+    privileged: true
     entrypoint: ['ansible-playbook', '-i', 'inventory.ini', 'day0.yml']
     networks:
       wizcloud:
