@@ -19,10 +19,11 @@ RUN git clone git@github.com:bodleytunes/wizzcloud-ansible-lab.git
 
 
 # final resulting container, should not contain the ssh-key from above.
-FROM python:3.9-slim
+#FROM python:3.9-slim
+FROM ubuntu:20.04
 
 #RUN echo "${VAULT_PASSWORD}" > /root/.vault_password && chmod 600 /root/.vault_password
-RUN apt-get update && apt-get install python3-pip openssh-client  -y
+RUN apt-get update && apt-get install python3-pip openssh-client python3  -y
 
 RUN pip3 install ansible
 
