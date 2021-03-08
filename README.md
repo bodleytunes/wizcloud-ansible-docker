@@ -37,7 +37,7 @@ Login
 `docker tag reg.wizznet.co.uk:80/wizznet/wizcloud-ansible-deployer reg.wizznet.co.uk:80/wizznet/wizcloud-ansible-deployer:v1.0.0`
 
 ###### Push
-`docker tag reg.wizznet.co.uk:80/wizznet/wizcloud-ansible-deployer reg.wizznet.co.uk:80/wizznet/wizcloud-ansible-deployer:v1.0.0`
+`docker push reg.wizznet.co.uk:80/wizznet/wizcloud-ansible-deployer:v1.0.0`
 
 ###### Push and be tagged as latest
 `docker push reg.wizznet.co.uk:80/wizznet/wizcloud-ansible-deployer`
