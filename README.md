@@ -41,3 +41,6 @@ Login
 
 ###### Push and be tagged as latest
 `docker push reg.wizznet.co.uk:80/wizznet/wizcloud-ansible-deployer`
+
+###### docker-compose push
+`docker-compose push`
